@@ -1,0 +1,21 @@
+version: '2.2'
+
+services:
+  openldap:
+    image: osixia/openldap:latest
+    ports:
+      - '389:389'      
+    environment:
+      - LDAP_ORGANISATION=ldapusermanager
+      - LDAP_DOMAIN=ldapusermanager.org
+      - LDAP_ADMIN_PASSWORD=change_me
+      - LDAP_RFC2307BIS_SCHEMA=true
+      - LDAP_REMOVE_CONFIG_AFTER_SETUP=true
+      - LDAP_TLS_VERIFY_CLIENT=never
+    volumes:
+      - './data:/var/lib/ldap'
+      - './slapd.d:/etc/ldap/slapd.d'
+
+volumes:
+  openldap_data:
+    driver: local
