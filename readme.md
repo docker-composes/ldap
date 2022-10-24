@@ -1,5 +1,15 @@
 # LDAP 镜像
 
-* 镜像源：https://hub.docker.com/r/wheelybird/ldap-user-manager。
-* 启动后通过 http://localhost/setup 重置管理员密码
-* 注意替换 Admin 镜像中的本机 IP 地址。
+> 镜像地址：https://github.com/osixia/docker-openldap/blob/master/example/docker-compose.yml
+
+查看 admin:  
+```
+docker exec openldap ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin
+```
+
+登录：
+
+```
+DN: cn=admin,dc=example,dc=org
+密码： admin
+```
